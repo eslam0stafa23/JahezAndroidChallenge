@@ -1,41 +1,56 @@
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
+  id 'com.android.application'
+  id 'kotlin-android'
+  id 'kotlin-kapt'
+  id 'kotlin-parcelize'
+  id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
-    compileSdk 31
+  compileSdk 31
 
-    defaultConfig {
-        applicationId "net.jahez.jahezchallenge"
-        minSdk 19
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
+  defaultConfig {
+    applicationId "net.jahez.jahezchallenge"
+    minSdk 28
+    targetSdk 31
+    versionCode 1
+    versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    }
+    testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    buildConfigField 'String', 'MAIN_URL', '"https://jahez-other-oniiphi8.s3.eu-central-1.amazonaws.com/"'
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+  buildFeatures {
+    viewBinding true
+  }
 }
 
 dependencies {
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+  implementation androidCoreGroup
+  implementation navigation
+  implementation networking
+  implementation daggerLib
+  implementation room
+  implementation thirdParty
+
+  annotationProcessor annotationProcessorGroup
+  kapt kaptGroup
+
+  testImplementation testImplementationGroup
+  androidTestImplementation androidTestImplementationGroup
 }

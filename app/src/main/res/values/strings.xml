@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Jahez Challenge</string>
+    <string name="restaurant_distance">%s Km Away</string>
+    <string name="has_offers">HAS OFFERS!</string>
+    <string name="sort_hint">Please select a value to sort the list based upon!</string>
+    <string name="reset_btn">Reset</string>
+    <string name="sorting_value_1">Select a value!</string>
+    <string name="sorting_value_2">Distance</string>
+    <string name="sorting_value_3">Rating</string>
+
 </resources>
